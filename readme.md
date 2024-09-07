@@ -1,36 +1,55 @@
-# Quantum Mechanical Keyboard Firmware
+# DDR Controller - QMK Firmware
 
-[![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
-[![Discord](https://img.shields.io/discord/440868230475677696.svg)](https://discord.gg/qmk)
-[![Docs Status](https://img.shields.io/badge/docs-ready-orange.svg)](https://docs.qmk.fm)
-[![GitHub contributors](https://img.shields.io/github/contributors/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/pulse/monthly)
-[![GitHub forks](https://img.shields.io/github/forks/qmk/qmk_firmware.svg?style=social&label=Fork)](https://github.com/qmk/qmk_firmware/)
+This repository contains the QMK firmware for the DDR Controller, designed for use with the RP2040 microcontroller. This controller is specifically designed for use in Dance Dance Revolution (DDR) setups, allowing for custom key mappings and easy configuration using QMK.
+Features
 
-This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github.com/tmk/tmk_keyboard) with some useful features for Atmel AVR and ARM controllers, and more specifically, the [OLKB product line](https://olkb.com), the [ErgoDox EZ](https://ergodox-ez.com) keyboard, and the Clueboard product line.
+    5-button setup for DDR use.
+    RP2040 microcontroller (Pro Micro RP2040).
+    Full QMK support for custom key mapping and firmware updates.
+    Backlight support for visual feedback.
+    NKRO (N-Key Rollover) support.
+    Bootmagic enabled for easy bootloader access.
 
-## Documentation
+### Hardware Configuration
 
-* [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
+    Microcontroller: RP2040 (Pro Micro RP2040)
+    Diode Direction: ROW2COL (ensure diodes are installed correctly for this configuration).
+    Matrix Layout: 5-row, 1-column matrix
+    Matrix Pins:
+        Column Pin: GP4
+        Row Pins: GP0, GP1, GP2, GP3, GP5
+    Backlight Pin: GP28 for optional LED backlighting.
 
-The docs are powered by [VitePress](https://vitepress.dev/). They are also viewable offline; see [Previewing the Documentation](https://docs.qmk.fm/#/contributing?id=previewing-the-documentation) for more details.
+### Flashing the Firmware
 
-You can request changes by making a fork and opening a [pull request](https://github.com/qmk/qmk_firmware/pulls).
+To flash the firmware to your DDR Controller, follow these steps:
+1. Install QMK CLI
+If you haven't already, install the QMK CLI by following the QMK CLI installation guide.
+2. Flash the Firmware
+Once QMK is installed, navigate to your QMK directory, and use the following command to flash the firmware to the DDR Controller:
 
-## Supported Keyboards
+```
+bash
+qmk flash -kb ddrcontroller -km default
+```
 
-* [Planck](/keyboards/planck/)
-* [Preonic](/keyboards/preonic/)
-* [ErgoDox EZ](/keyboards/ergodox_ez/)
-* [Clueboard](/keyboards/clueboard/)
-* [Cluepad](/keyboards/clueboard/17/)
-* [Atreus](/keyboards/atreus/)
+This command will compile and flash the default keymap to your DDR Controller. Make sure your controller is in bootloader mode by pressing the reset button or using Bootmagic.
+3. Custom Keymaps
+To create a custom keymap, you can edit the keymap.c file located in the keyboards/ddrcontroller/keymaps/ folder. After modifying the keymap, compile and flash the firmware using the same command:
 
-The project also includes community support for [lots of other keyboards](/keyboards/).
+```
+bash
+qmk flash -kb ddrcontroller -km <your_custom_keymap>
+Layout
+```
 
-## Maintainers
+The current layout uses a simple 5-button matrix:
+	Column 1 (GP4)
+Row 1 (GP0)	DDR Button 1 (Up)
+Row 2 (GP1)	DDR Button 2 (Down)
+Row 3 (GP2)	DDR Button 3 (Left)
+Row 4 (GP3)	DDR Button 4 (Right)
+Row 5 (GP5)	DDR Button 5 (Center)
 
-QMK is developed and maintained by Jack Humbert of OLKB with contributions from the community, and of course, [Hasu](https://github.com/tmk). The OLKB product firmwares are maintained by [Jack Humbert](https://github.com/jackhumbert), the Ergodox EZ by [ZSA Technology Labs](https://github.com/zsa), the Clueboard by [Zach White](https://github.com/skullydazed), and the Atreus by [Phil Hagelberg](https://github.com/technomancy).
-
-## Official Website
-
-[qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
+#### License
+This project is licensed under the GPLv2 License as per the QMK firmware.
