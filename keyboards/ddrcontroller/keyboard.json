@@ -1,0 +1,39 @@
+{
+    "manufacturer": "t",
+    "keyboard_name": "ddrcontroller",
+    "maintainer": "timon-l",
+    "development_board": "promicro_rp2040",
+    "diode_direction": "ROW2COL",
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true
+    },
+    "matrix_pins": {
+        "cols": ["GP4"],
+        "rows": ["GP0", "GP1", "GP2", "GP3", "GP5"]
+    },
+    "backlight": {
+        "pin": "GP28"
+    },
+    "url": "",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0000",
+        "vid": "0xFEED"
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix": [0, 0], "x": 0, "y": 0},
+                {"matrix": [1, 0], "x": 0, "y": 1},
+                {"matrix": [2, 0], "x": 0, "y": 2},
+                {"matrix": [3, 0], "x": 0, "y": 3},
+                {"matrix": [4, 0], "x": 0, "y": 4}
+            ]
+        }
+    }
+}
